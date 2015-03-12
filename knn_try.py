@@ -3,6 +3,7 @@
 Created on Thu Mar 12 14:05:06 2015
 
 @author: pgalland
+I/O code from Alexandre Gramfort
 """
 
 import numpy as np
