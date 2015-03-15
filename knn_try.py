@@ -15,22 +15,31 @@ dataset = io.loadmat('data_challenge.mat')
 X_train, y_train, X_test = dataset['X_train'], dataset['y_train'], dataset['X_test']
 
 #%%
-from functions import (shuffle_in_unison, cn_to_r2n)
+from functions import (shuffle_in_unison)
 
 shuffle_in_unison(X_train, y_train)
 
-X_small = X_train[:128]
-y_small = y_train[:128]
-X_large = X_train[128:]
-y_large = y_train[128:]
+X_small = X_train[:512]
+y_small = y_train[:512]
+X_large = X_train[512:]
+y_large = y_train[512:]
 
 X_small_f = np.fft.rfft(X_small)
 X_large_f = np.fft.rfft(X_large)
 
-X_small_fr = cn_to_r2n(X_small_f)
-X_large_fr = cn_to_r2n(X_large_f)
+
+
 
 #%%
+from sklearn import neighbors
+from sklearn.metrics import accuracy_score
+
+knn_param=5
+myKNN = neighbors.KNeighborsClassifier(n_neighbors=knn_param)
+myKNN.fit(X_small, y_small)
+
+y_predicted = myKNN.predict(X_large)
+print(accuracy_score(y_large, y_predicted))
 
 
 
