@@ -1,1 +1,3 @@
 data_challenge.mat
+*.pyc
+y_pred.txt

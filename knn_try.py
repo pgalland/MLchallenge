@@ -6,7 +6,6 @@ Created on Thu Mar 12 14:05:06 2015
 challenge organized by from Alexandre Gramfort
 """
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy import io
 
 
